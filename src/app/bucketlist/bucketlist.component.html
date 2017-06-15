@@ -1,8 +1,17 @@
 <app-header>
+	<form class= "col-md-4" (ngSubmit)="submitBucketlist()">
+	<h4> Create bucketlist</h4>
+            <div class="form-group">
+            	 <label for="username" >bucketlist name</label>
+                <input type="text" class="form-control" placeholder="bucketlist_name" name="name">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]>Add</button>
+                <button  type="submit" class="btn btn-warning btn-block" [disabled]>Update</button>
 
-	<p>
-	  You can create bucketlists
-	</p>
+            </div>
+            <hr>
+    </form>
+         
+
 	
 
 </app-header>
