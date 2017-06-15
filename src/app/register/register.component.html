@@ -11,7 +11,7 @@
 	        <input type="text" class="form-control" placeholder="Username" formControlName="username">
 		</div>
 		<div class="alert alert-danger" *ngIf="user.get('username').hasError('required') && user.get('username').touched">
-        	Name is required
+        	username is required
        </div>
 
 
@@ -20,7 +20,7 @@
             <input type="password" class="form-control" placeholder="passwod" formControlName="password">  
         </div>
         <div class="alert alert-danger" *ngIf="user.get('password').hasError('required') && user.get('password').touched">
-        	pass is required
+        	password is required
        </div>
         <div class="alert alert-danger" *ngIf="user.get('password').hasError('minlength') && user.get('password').touched">
         	Minimum of 5 characters
