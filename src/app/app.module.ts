@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
 import {BucketlistComponent} from './bucketlist/bucketlist.component';
+import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 
 //services
 import { RegisterService } from './register/register.service';
-import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import { LoginComponent } from './login/login.component';
     HttpModule,
     routing
   ],
-  providers: [RegisterService],
+  providers: [RegisterService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
