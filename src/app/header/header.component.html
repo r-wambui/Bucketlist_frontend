@@ -1,0 +1,20 @@
+ <div class="container">
+
+
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Home</a></li> 
+                    <li role="presentation"><a routerLink="/register">Sign Up</a></li>
+                       <br> Already have an account? <br>
+                     <li role="presentation"><a routerLink="/login"> Sign In</a></li>
+                    <router-outlet></router-outlet> 
+                </ul>
+            </nav>
+            <h3 class="text-muted">Bucket list</h3>
+        </div>
+
+</div>
+
+
+<ng-content></ng-content>

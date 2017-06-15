@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import {RegisterService} from './register/register.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers:[RegisterService]
 })
 export class AppComponent {
-  title = 'app works!';
+	pageTitle: string = "Bucket list" 
 }
