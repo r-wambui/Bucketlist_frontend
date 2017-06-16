@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 //services
 import { RegisterService } from './register/register.service';
 import { LoginService } from './login/login.service';
+import { BucketlistService } from './bucketlist/bucketlist.service'
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { LoginService } from './login/login.service';
     HttpModule,
     routing
   ],
-  providers: [RegisterService, LoginService],
-  bootstrap: [AppComponent]
+  providers: [RegisterService, LoginService, BucketlistService],
+  bootstrap: [AppComponent,]
 })
 export class AppModule { }
