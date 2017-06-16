@@ -3,6 +3,7 @@ import { ModuleWithProviders }  from '@angular/core';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import {BucketlistComponent} from './bucketlist/bucketlist.component';
+
 import {LoginComponent} from './login/login.component';
 
 

@@ -1,8 +1,9 @@
 <app-header>
+<div>
 	<form class= "col-md-4" (ngSubmit)="submitBucketlist()">
 	<h4> Create bucketlist</h4>
             <div class="form-group">
-            	 <label for="username" >bucketlist name</label>
+            	 <label for="bucket" >bucketlist name</label>
                 <input type="text" class="form-control" placeholder="bucketlist_name" name="name">
                 <button type="submit" class="btn btn-primary btn-block" [disabled]>Add</button>
                 <button  type="submit" class="btn btn-warning btn-block" [disabled]>Update</button>
@@ -11,7 +12,22 @@
             <hr>
     </form>
          
+</div>
 
+<div>
+
+    <div class="col-md-4">
+    <h4> My buckelists</h4>
+            <div *ngIf="bucketlists">
+                {{bucketlists.name }}
+            </div>
+            
+            <div class="panel-footer">
+                <button class="btn btn-info" (click)="editComment()"><span class="glyphicon glyphicon-edit"></span></button>
+                <button class="btn btn-danger" (click)="deleteComment(comment.id)"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+        </div>
+</div>
 	
 
 </app-header>
