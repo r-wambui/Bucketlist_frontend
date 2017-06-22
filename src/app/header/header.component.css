@@ -1,11 +1,16 @@
 .header {
   padding-bottom: 50px;
   border-bottom: 1px solid #e5e5e5;
+  height: 18px;
 }
 
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 40px;
+  line-height: 30px;
+}
+
+body {
+    background-color: lightgrey;
 }
 

@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,8 @@ export class LoginComponent implements OnInit {
   user:FormGroup;
 
   constructor(private loginService: LoginService, private router: Router) {}
+  message: any= ''
+  authorization: any=''
 
   ngOnInit() {
       this.user = new FormGroup({
@@ -24,12 +27,23 @@ export class LoginComponent implements OnInit {
   onSubmit(user) {
     let data = {
       username: this.user.get('username').value,
-      password: this.user.get('password').value
+      password: this.user.get('password').value,
+    
     }
-    let response = this.loginService.loginUser(data).toPromise().then((user) => {
-    this.router.navigate(['/bucketlist']);
-  }).catch((error) => {
-      console.log('there was an error');
-    });
- }
+    this.loginService.loginUser(data)
+    .subscribe(response => {
+       console.log(response);
+      this.message = response.message
+      // console.log(this.message);
+      this.authorization = response.Authorization
+      
+
+      if(this.authorization != null) {
+        this.router.navigate(['/bucketlist'])
+        localStorage.setItem('Authorization', this.authorization)
+      }
+        
+ 
+})
+}
 }

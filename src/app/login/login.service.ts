@@ -20,11 +20,19 @@ export class LoginService {
 
 
   loginUser (body: Object): Observable<any> {
-    console.log(body);
+    // console.log(body);
         let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options       = new RequestOptions({ headers: headers }); // Create a request option
-        return this.http.post(this.loginUrl, body);// ...using post request
-                      
-    }   
+        return this.http.post(this.loginUrl, body, {headers: this.getHeaders()}).map(response => {
+          return response = response.json() 
+        });// ...using post request                 
+    } 
+
+    private getHeaders(){
+      let headers = new Headers();
+      headers.append('Accept', 'application/json');
+      headers.append('Content-Type', 'application/json');
+      return headers;
+    }  
   }
   

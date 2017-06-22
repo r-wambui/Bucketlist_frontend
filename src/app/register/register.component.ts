@@ -32,22 +32,4 @@ export class RegisterComponent implements OnInit {
       console.log('there was an error');
     });
   }
-
-  // getData() {
-  // 	this.registerService.getData().then((data) => {
-  // 		console.log('you posted successfully');
-  // 	}).catch((error) => { console.log('there was an error in your application'); });
-  // }
-
-//   postData(data) {
-//   	//validate form data
-
-//   	this.registerService.postData(data).then((data) => {
-//   		console.log('Account created successfully');
-//   	}).catch((error) => {})
-//   }
-
 }
-
-// set default authorization header to include token ???/ -. hard 
-// enable CORS on back-end FLASK_CORS

@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-import {BucketlistComponent} from './bucketlist.component';
+import {ItemsComponent} from './items.component';
 import { Router } from '@angular/router';
 
 //Import RxJs methods
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/catch';
 
 
  @Injectable()
-export class BucketlistService {
+export class ItemService {
   token: any = JSON.parse(localStorage.getItem("user"));
   private bucketlistUrl = 'http://127.0.0.1:5000/v1/bucketlists';
 
@@ -30,7 +30,7 @@ export class BucketlistService {
  }
   
   // Fetch all existing bucketlists
-  getBucketlist() : Observable<BucketlistComponent[]> {
+  getBucketlistItems() : Observable<ItemsComponent[]> {
   		
          return this.http.get(this.bucketlistUrl, {"headers":this.headers})
 
@@ -39,40 +39,30 @@ export class BucketlistService {
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
      }
- addBucketlist (body: Object): Observable<any> {
-        return this.http.post(this.bucketlistUrl, body, {"headers":this.headers})
+  //Adding a bucketlist item
+ addBucketlistItem (name, bucketlist_id){
+        const url = `${this.bucketlistUrl}/${bucketlist_id}/item`;
+        return this.http.post(url,
+         {"name":name}, {"headers":this.headers})
          .map(response => response.json())
+
 
          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));                  
     } 
- editBucketlist(bucketlist_id, name): Observable<BucketlistComponent[]>{
+   //update bucketlist item
+ editBucketlistItem(bucketlist_id, item_id, name): Observable<ItemsComponent[]>{
+   console.log(item_id)
 
-  
-        return this.http.put(this.bucketlistUrl  +"/"+ <string>bucketlist_id, {name:name},{"headers":this.headers} ) 
+        return this.http.put(this.bucketlistUrl  +"/"+ <string>bucketlist_id +'/item/' +<string>item_id, {name:name},{"headers":this.headers} ) 
                          .map((res:Response) => res.json()) 
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error')); 
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     } 
-deleteBucketlist(bucketlist_id){
+
+deleteBucketlistItem(bucketlist_id, item_id){
        
-       return this.http.delete(this.bucketlistUrl  +"/"+ <string>bucketlist_id, {"headers":this.headers} ) 
-       
+       return this.http.delete(this.bucketlistUrl  +"/"+ <string>bucketlist_id +'/item/' +<string>item_id,  {"headers":this.headers} ) 
+      
                          .map((res:Response) => res.json()) 
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-
-}
-getBucket(bucket_id){
-  return this.http.get(this.bucketlistUrl  +"/"+ <string>bucket_id, {"headers":this.headers})
-
-                         .map(response => response.json())
-
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-
-}
-searchBucket(name){
-  return this.http.get(this.bucketlistUrl  + '?q=' + <string>name, {"headers":this.headers})
-
-                         .map(response => response.json())
-
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
 }
