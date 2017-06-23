@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { Router, RouterModule } from '@angular/router';
 import { routing } from './routes';
 import { MomentModule } from 'angular2-moment';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 
 //components
@@ -50,7 +51,8 @@ import { ItemService } from './items/item.service';
     HttpModule,
     routing,
     Ng2PaginationModule,
-    MomentModule
+    MomentModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [RegisterService, LoginService, BucketlistService, ItemService],
   bootstrap: [AppComponent,]

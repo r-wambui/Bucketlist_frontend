@@ -17,7 +17,7 @@
 </div>
 <div style="position: relative;" class="anchor-point">
    <div style="position: absolute; top: 200px; left: 20px;">
-   <img src="./item.jpeg"  width="390" height="340" />
+   <img src="assets/images/item.jpeg"  width="390" height="340" />
    </div>
 </div>
 
@@ -43,7 +43,7 @@
                     <th>{{bucketlist.id}}</th>
                     <th>{{bucketlist.name}}
                     <div class="container">
-                      <img src="./buc.jpeg"  width="150" height="70" />
+                      <img src="assets/images/buc.jpeg"  width="150" height="70" />
                       <div class="overlay">
                         <div class="text"><a (click)="viewItems(bucketlist.id)">view items</a></div>
                       </div>
@@ -57,7 +57,7 @@
 
                 <div class="panel-footer">
                 <!--  <input type="text" class="form-control" placeholder="Enter bucketlist name" name="name"  [(ngModel)]="name"> -->
-                    <button class="btn btn-info" data-toggle="modal" data-target="#newitem" ><span class="glyphicon glyphicon-edit"></span></button>
+                    <button class="btn btn-info" data-toggle="modal" data-target="#newitem"><span class="glyphicon glyphicon-edit" (click)="setBucketListId(bucketlist_id)" ></span> </button>
                     <button class="btn btn-danger" (click)="onDelete(bucketlist.id)"><span class="glyphicon glyphicon-remove"></span></button>
                 </div>
 
@@ -86,7 +86,7 @@
             <label for="name" >bucket name</label>
             <input type="text" class="form-control" placeholder="Enter new bucketlist name" name="name"
             [(ngModel)]="name">
-<button type="submit" class="btn btn-warning btn-block" (click)="onUpdate(bucketlist.id, name)" >Update</button>
+<button type="submit" class="btn btn-warning btn-block" (click)="onUpdate(name)" >Update</button>
           </div>
         </form>
         
