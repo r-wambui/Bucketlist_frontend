@@ -31,6 +31,6 @@ user register
 User login
 ![Screen shot](src/assets/screenshots/sign_in.png)
 Dashboard
-![Screen shot]src/assets/screenshots/user_dashboard.png)
+![Screen shot](src/assets/screenshots/user.png)
 ![Screen shot](src/assets/screenshots/items.png)
 
