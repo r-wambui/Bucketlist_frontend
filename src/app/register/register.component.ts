@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './register.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MdSnackBar, MdSnackBarConfig, MdSnackBarRef} from '@angular/material';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -13,7 +14,7 @@ import 'rxjs/add/operator/toPromise';
 export class RegisterComponent implements OnInit {
   user:FormGroup;
 
-  constructor(private registerService: RegisterService, private router: Router) {}
+  constructor(private registerService: RegisterService, private router: Router, private snackbar: MdSnackBar) {}
 
   ngOnInit() {
       this.user = new FormGroup({
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
     let response = this.registerService.postUser(data).toPromise().then((user) => {
     this.router.navigate(['/bucketlist']);
   }).catch((error) => {
-      console.log('there was an error');
+      
     });
   }
 }

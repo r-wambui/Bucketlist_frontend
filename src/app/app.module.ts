@@ -7,6 +7,9 @@ import { Router, RouterModule } from '@angular/router';
 import { routing } from './routes';
 import { MomentModule } from 'angular2-moment';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 //components
@@ -48,10 +51,13 @@ import { ItemService } from './items/item.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
+    BrowserAnimationsModule,
     HttpModule,
     routing,
     Ng2PaginationModule,
     MomentModule,
+    FlashMessagesModule,
     SimpleNotificationsModule.forRoot()
   ],
   providers: [RegisterService, LoginService, BucketlistService, ItemService],

@@ -15,7 +15,7 @@ export class BucketlistComponent implements OnInit {
   bucketlist:FormGroup
   edit: boolean =false;
   name;
-  bucketListId:number;
+  bucketlistId:number;
   bucketlist_id:number;
   
   constructor(private BucketlistService:BucketlistService, private router:Router) {}
@@ -27,8 +27,8 @@ export class BucketlistComponent implements OnInit {
     console.log(localStorage.getItem('Authorization'));
   	
   }
-setBucketListId(id){
-    this.bucketListId =id;
+setId(id){
+    this.bucketlistId =id;
   }
 
   loadBuckets() {
@@ -52,8 +52,9 @@ setBucketListId(id){
     
     
     
-      let response = this.BucketlistService.editBucketlist(this.bucketlist_id, name).subscribe(response => {
+      let response = this.BucketlistService.editBucketlist(this.bucketlistId, this.name).subscribe(response => {
        this.loadBuckets()
+       
          })
 
      
