@@ -1,7 +1,8 @@
 <app-header>
 <div>
 	<form class= "col-md-4" novalidate (ngSubmit)="onAdd(bucketlist)" [formGroup]="bucketlist">
-	<h4> Create bucketlist</h4>
+  <div class="user"> Hi {{user}} Welcome to API  </div>
+	<h4>  Create bucketlist</h4>
             <div class="form-group">
             	 <label for="bucket" >bucketlist name</label>
                 <input type="text" class="form-control" placeholder="Enter bucketlist name" formControlName="name" name="name">
