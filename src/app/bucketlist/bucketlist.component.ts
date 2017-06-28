@@ -27,6 +27,7 @@ export class BucketlistComponent implements OnInit {
      private service: NotificationsService) {}
 
   ngOnInit() {
+
     this.loadBuckets();  
     this.bucketlist = new FormGroup({
         name: new FormControl('', [Validators.required])})
@@ -41,7 +42,8 @@ setId(id){
   loadBuckets() {
   	this.BucketlistService.getBucketlist().toPromise().then((bucketlists) => {
   		this.bucketlists=bucketlists;
-  		console.log(bucketlists); // not null
+  		console.log(bucketlists);
+       // not null
     })
 }
   onAdd(name) {
@@ -67,14 +69,10 @@ setId(id){
   }
   onUpdate(name){
     
-    
-    
       let response = this.BucketlistService.editBucketlist(this.bucketlistId, this.name).subscribe(response => {
        this.loadBuckets()
 
          })
-
-     
 
   }
   onDelete(bucketlist_id){
@@ -95,6 +93,7 @@ setId(id){
         console.log(response);
         this.bucketlists = response
         console.log(this.bucketlists);
+
       
       });
   }
