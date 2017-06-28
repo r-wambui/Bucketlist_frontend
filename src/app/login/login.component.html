@@ -22,13 +22,15 @@
         <div class="alert alert-danger" *ngIf="user.get('password').hasError('required') && user.get('password').touched">
         	password is required
        </div>
+        <div >{{ loginError }}</div>
 
 	    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="user.invalid">Sign in </button>
-	    <router-outlet></router-outlet> 
+
 	 </form>
 
  </div>
  <ng-content></ng-content>
+
 
 </app-header>
 <app-footer>
