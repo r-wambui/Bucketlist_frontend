@@ -19,6 +19,7 @@ isLoggedIn(){
 
   logoutUser(){
  	localStorage.removeItem('Authorization');
+ 	window.location.reload()
  	this.router.navigate(['/'])
  }
 
