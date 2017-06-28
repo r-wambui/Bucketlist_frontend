@@ -3,6 +3,8 @@ import { BucketlistService } from './bucketlist.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/toPromise';
+import { NotificationsService } from 'angular2-notifications';
+
 
 @Component({
   selector: 'bucketlist',
@@ -17,14 +19,19 @@ export class BucketlistComponent implements OnInit {
   name;
   bucketlistId:number;
   bucketlist_id:number;
+  get user(): any {
+    return localStorage.getItem('username');
+}
   
-  constructor(private BucketlistService:BucketlistService, private router:Router) {}
+  constructor(private BucketlistService:BucketlistService, private router:Router,
+     private service: NotificationsService) {}
 
   ngOnInit() {
     this.loadBuckets();  
     this.bucketlist = new FormGroup({
         name: new FormControl('', [Validators.required])})
     console.log(localStorage.getItem('Authorization'));
+    // this.loadBuckets()
   	
   }
 setId(id){
@@ -45,6 +52,16 @@ setId(id){
     let response = this.BucketlistService.addBucketlist(data).subscribe(response =>{
       this.bucketlist=name
       this.loadBuckets()
+      this.service.success(
+          'success', 
+         ' Bucketlist added successful!',
+         {
+          timeOut: 5000,
+          showProgressBar: true,
+          pauseOnHover: false,
+          clickToClose: false,
+          maxLength: 50
+         })
   
     });
   }
@@ -54,7 +71,7 @@ setId(id){
     
       let response = this.BucketlistService.editBucketlist(this.bucketlistId, this.name).subscribe(response => {
        this.loadBuckets()
-       
+
          })
 
      
