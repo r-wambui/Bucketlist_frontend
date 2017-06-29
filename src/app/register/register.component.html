@@ -1,0 +1,40 @@
+<app-header>
+
+<div class="col-md-4 col-md-offset-4" center>
+	<h3 >  Create an account</h3>
+
+	<form novalidate (ngSubmit)="onSubmit(user)" [formGroup]="user">
+
+	    <div class="form-group"> 
+	        <label for="username" >Username</label>
+	        <input type="text" class="form-control" placeholder="Username" formControlName="username">
+		</div>
+		<div class="alert alert-danger" *ngIf="user.get('username').hasError('required') && user.get('username').touched">
+        	username is required
+       </div>
+
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" placeholder="passwod" formControlName="password">  
+        </div>
+        <div class="alert alert-danger" *ngIf="user.get('password').hasError('required') && user.get('password').touched">
+        	password is required
+       </div>
+        <div class="alert alert-danger" *ngIf="user.get('password').hasError('minlength') && user.get('password').touched">
+        	Minimum of 5 characters
+        </div>
+
+
+	    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="user.invalid">Sign Up</button>
+        <flash-messages></flash-messages>
+	    <router-outlet></router-outlet> 
+	 </form>
+
+ </div>
+ <ng-content></ng-content>
+
+</app-header>
+<app-footer>
+</app-footer>
+

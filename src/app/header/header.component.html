@@ -1,0 +1,34 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title></title>
+ </head>
+ <body>
+ 
+ 
+ <div class="container-fluid" >
+
+
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li *ngIf="!isLoggedIn()" role="presentation"><a href="#">Home</a></li> 
+                    <li *ngIf="!isLoggedIn()" role="presentation"><a routerLink="/register">Sign Up</a></li>
+                    <li *ngIf="!isLoggedIn()" role="presentation"><a routerLink="/login"> Sign In</a></li>
+                    <li  *ngIf="isLoggedIn()" role="presentation" ><a (click)=logoutUser()> log out</a></li>
+                   <!--  <router-outlet></router-outlet>  -->
+                </ul>
+            </nav>
+            <h2 class="text-muted">Bucket list API</h2>
+        </div>
+
+</div>
+
+ 
+
+
+<ng-content></ng-content>
+<simple-notifications></simple-notifications>
+<router-outlet></router-outlet>
+</body>
+ </html>
